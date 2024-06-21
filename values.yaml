@@ -1,0 +1,28 @@
+app:
+  name: nginx
+  image: nginx:latest
+  port: 80
+
+deployment:
+  name: nginx-deployment
+  replicas: 3
+
+service:
+  name: nginx-service
+  port: 80
+
+ingress:
+  enabled: true
+  name: nginx-ingress
+  host: nginx.local
+  annotations: {}
+
+serviceAccount:
+  create: true
+  name: nginx-service-account
+
+autoscaling:
+  enabled: true
+  minReplicas: 2
+  maxReplicas: 5
+  targetCPUUtilizationPercentage: 50
